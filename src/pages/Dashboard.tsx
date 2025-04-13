@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { Droplet, SunMedium, Thermometer, Wind, SeedingIcon } from 'lucide-react';
+import { Droplet, SunMedium, Thermometer, Wind, Sprout } from 'lucide-react';
 import StatCard from '@/components/dashboard/StatCard';
 import WeatherCard from '@/components/dashboard/WeatherCard';
 import SoilMoistureCard from '@/components/dashboard/SoilMoistureCard';
@@ -15,40 +14,33 @@ const Dashboard = () => {
   const [soilMoisture, setSoilMoisture] = useState(48);
   const [windSpeed, setWindSpeed] = useState(14);
 
-  // Simulated real-time data updates
   useEffect(() => {
     const updateSensorData = () => {
-      // Update temperature: 22-27°C with slow changes
       setTemperature(prev => {
         const newTemp = prev + (Math.random() * 0.4 - 0.2);
         return Math.max(22, Math.min(27, newTemp));
       });
       
-      // Update humidity: 55-70% with moderate changes
       setHumidity(prev => {
         const newHumidity = prev + (Math.random() * 2 - 1);
         return Math.max(55, Math.min(70, newHumidity));
       });
       
-      // Update soil moisture: 40-60% with slow changes
       setSoilMoisture(prev => {
         const newMoisture = prev + (Math.random() * 1 - 0.5);
         return Math.max(40, Math.min(60, newMoisture));
       });
       
-      // Update wind speed: 5-20 km/h with higher variability
       setWindSpeed(prev => {
         const newWind = prev + (Math.random() * 3 - 1.5);
         return Math.max(5, Math.min(20, newWind));
       });
     };
 
-    // Update sensor data every 3 seconds
     const sensorInterval = setInterval(updateSensorData, 3000);
     
-    // Generate random alerts
     const alertInterval = setInterval(() => {
-      const shouldShowAlert = Math.random() < 0.2; // 20% chance of alert
+      const shouldShowAlert = Math.random() < 0.2;
       
       if (shouldShowAlert) {
         const alerts = [
@@ -96,7 +88,6 @@ const Dashboard = () => {
         </p>
       </div>
       
-      {/* Stats Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard 
           title="Temperature" 
@@ -115,7 +106,7 @@ const Dashboard = () => {
         <StatCard 
           title="Soil Moisture" 
           value={`${Math.round(soilMoisture)}%`}
-          icon={<SeedingIcon className="h-4 w-4" />}
+          icon={<Sprout className="h-4 w-4" />}
           trend={{ value: 2.1, isPositive: true }}
           isLive={true}
         />
@@ -128,15 +119,12 @@ const Dashboard = () => {
         />
       </div>
       
-      {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column */}
         <div className="lg:col-span-2 space-y-6">
           <SoilMoistureCard />
           <CropGrowthCard />
         </div>
         
-        {/* Right Column */}
         <div className="space-y-6">
           <WeatherCard 
             location="Farm Location" 

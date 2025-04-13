@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -18,7 +17,7 @@ import {
   Wind,
   Settings as SettingsIcon,
   CloudRain,
-  SeedingIcon,
+  Sprout,
   ToggleLeft
 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
@@ -45,7 +44,6 @@ const Alerts = () => {
     info: false
   });
   
-  // Generate initial alerts
   useEffect(() => {
     const initialAlerts: Alert[] = [
       {
@@ -97,7 +95,6 @@ const Alerts = () => {
     
     setAlerts(initialAlerts);
     
-    // Simulate a new alert every 40 seconds
     const interval = setInterval(() => {
       const newAlerts = [
         {
@@ -133,7 +130,7 @@ const Alerts = () => {
       ];
       
       const randomAlert = newAlerts[Math.floor(Math.random() * newAlerts.length)];
-      const shouldBeCritical = Math.random() < 0.2; // 20% chance for critical alerts
+      const shouldBeCritical = Math.random() < 0.2;
       
       const newAlert: Alert = {
         id: Date.now().toString(),
@@ -201,14 +198,13 @@ const Alerts = () => {
       return <AlertTriangle className="h-5 w-5 text-amber-500" />;
     }
     
-    // For info alerts, show icon based on source
     switch (source) {
       case 'irrigation':
         return <Droplet className="h-5 w-5 text-blue-500" />;
       case 'weather':
         return <CloudRain className="h-5 w-5 text-blue-500" />;
       case 'crops':
-        return <SeedingIcon className="h-5 w-5 text-green-500" />;
+        return <Sprout className="h-5 w-5 text-green-500" />;
       case 'system':
         return <SettingsIcon className="h-5 w-5 text-gray-500" />;
       default:
@@ -269,7 +265,6 @@ const Alerts = () => {
         </p>
       </div>
       
-      {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card>
           <CardContent className="pt-6">
@@ -323,7 +318,6 @@ const Alerts = () => {
         </Card>
       </div>
       
-      {/* Alerts content */}
       <Card>
         <CardHeader>
           <div className="flex justify-between items-center">
@@ -455,7 +449,6 @@ const Alerts = () => {
         </CardContent>
       </Card>
       
-      {/* Notification settings */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
@@ -603,7 +596,7 @@ const Alerts = () => {
               
               <div className="flex items-center space-x-4 p-4 border rounded-md">
                 <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
-                  <SeedingIcon className="h-4 w-4 text-green-500" />
+                  <Sprout className="h-4 w-4 text-green-500" />
                 </div>
                 <div>
                   <p className="font-medium">Crops</p>

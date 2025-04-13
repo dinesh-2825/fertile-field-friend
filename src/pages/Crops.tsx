@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { SeedingIcon, Leaf, Calendar, AlertCircle, TrendingUp, BarChart3Icon, List } from 'lucide-react';
+import { Sprout, Leaf, Calendar, AlertCircle, TrendingUp, BarChart3Icon, List } from 'lucide-react';
 
 // Mock crop data
 const crops = [
@@ -168,7 +167,7 @@ const Crops = () => {
             <CardContent className="p-4">
               <div className="flex justify-between items-start mb-2">
                 <div className="flex items-center">
-                  <SeedingIcon className="h-5 w-5 mr-2 text-primary" />
+                  <Sprout className="h-5 w-5 mr-2 text-primary" />
                   <h3 className="font-medium">{crop.name}</h3>
                 </div>
                 <Badge variant={crop.health === 'good' ? 'outline' : 'destructive'}>
@@ -202,7 +201,7 @@ const Crops = () => {
         <CardHeader>
           <div className="flex justify-between items-center">
             <CardTitle className="flex items-center">
-              <SeedingIcon className="h-5 w-5 mr-2" />
+              <Sprout className="h-5 w-5 mr-2" />
               {selectedCrop.name}
               <Badge className="ml-2">{selectedCrop.variety}</Badge>
             </CardTitle>

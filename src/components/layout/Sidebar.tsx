@@ -16,9 +16,9 @@ import {
   Home, 
   Droplet, 
   SunMedium, 
-  SeedingIcon, 
+  Sprout, 
   AlertCircle, 
-  Settings, The2, 
+  Settings, 
   Bell 
 } from 'lucide-react';
 
@@ -27,7 +27,7 @@ const Sidebar = () => {
     { title: 'Dashboard', icon: Home, path: '/' },
     { title: 'Irrigation', icon: Droplet, path: '/irrigation' },
     { title: 'Weather', icon: SunMedium, path: '/weather' },
-    { title: 'Crops', icon: SeedingIcon, path: '/crops' },
+    { title: 'Crops', icon: Sprout, path: '/crops' },
     { title: 'Alerts', icon: AlertCircle, path: '/alerts' },
     { title: 'Settings', icon: Settings, path: '/settings' },
   ];
@@ -37,7 +37,7 @@ const Sidebar = () => {
       <SidebarComponent>
         <div className="h-16 flex items-center px-4 border-b border-sidebar-border">
           <h1 className="text-lg font-bold text-sidebar-foreground flex items-center gap-2">
-            <SeedingIcon className="h-6 w-6" />
+            <Sprout className="h-6 w-6" />
             <span>FarmSmart</span>
           </h1>
         </div>
